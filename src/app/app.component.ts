@@ -3,6 +3,16 @@ import { HttpClient } from '@angular/common/http';
 import { forkJoin } from 'rxjs';
 
 const alphabet = Array.from({ length: 26 }, (_, i) => String.fromCharCode(65 + i));
+enum TextColors {
+  Default = 'white',
+  Success = '#00FF00',
+  Mistake = '#DC143C',
+};
+const textColors = {
+  default: TextColors.Default,
+  success: TextColors.Success,
+  mistake: TextColors.Mistake,
+};
 
 @Component({
   selector: 'app-root',
@@ -13,7 +23,7 @@ export class AppComponent implements AfterViewInit {
   @ViewChild('inputField') inputField!: ElementRef;
   nextLetter: string = alphabet[Math.floor(Math.random() * alphabet.length)];
   userInput: string = this.nextLetter;
-  userInputColor: 'white' | 'green' | 'red' = 'white';
+  userInputColor: TextColors = textColors.default;
   wordChain: string[] = [];
 
   constructor(private http: HttpClient) {}
@@ -33,7 +43,7 @@ export class AppComponent implements AfterViewInit {
   }
 
   handleSuccess(): void {
-    this.userInputColor = 'green';
+    this.userInputColor = textColors.success;
     setTimeout(() => {
       this.wordChain.push(this.userInput);
       this.updateNextLetter();
@@ -41,15 +51,15 @@ export class AppComponent implements AfterViewInit {
   }
 
   handleMistake(): void {
-    this.userInputColor = 'red';
+    this.userInputColor = textColors.mistake;
     setTimeout(() => {
       this.userInput = this.nextLetter;
-      this.userInputColor = 'white';
+      this.userInputColor = textColors.default;
     }, 500);
   }
 
   validateWord() {
-    if (this.userInput[0] !== this.nextLetter || this.wordChain.includes(this.userInput)) {
+    if (this.userInput[0] !== this.nextLetter || this.userInput.length === 1 || this.wordChain.includes(this.userInput)) {
       this.handleMistake();
       return;
     }
@@ -73,6 +83,6 @@ export class AppComponent implements AfterViewInit {
   updateNextLetter(): void {
     this.nextLetter = this.userInput[this.userInput.length - 1];
     this.userInput = this.nextLetter;
-    this.userInputColor = 'white';
+    this.userInputColor = textColors.default;
   }
 }
