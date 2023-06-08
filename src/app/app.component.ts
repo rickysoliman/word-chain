@@ -13,7 +13,7 @@ export class AppComponent implements AfterViewInit {
   @ViewChild('inputField') inputField!: ElementRef;
   nextLetter: string = alphabet[Math.floor(Math.random() * alphabet.length)];
   userInput: string = this.nextLetter;
-  userInputColor: 'black' | 'green' | 'red' = 'black';
+  userInputColor: 'white' | 'green' | 'red' = 'white';
   wordChain: string[] = [];
 
   constructor(private http: HttpClient) {}
@@ -44,7 +44,7 @@ export class AppComponent implements AfterViewInit {
     this.userInputColor = 'red';
     setTimeout(() => {
       this.userInput = this.nextLetter;
-      this.userInputColor = 'black';
+      this.userInputColor = 'white';
     }, 500);
   }
 
@@ -73,6 +73,6 @@ export class AppComponent implements AfterViewInit {
   updateNextLetter(): void {
     this.nextLetter = this.userInput[this.userInput.length - 1];
     this.userInput = this.nextLetter;
-    this.userInputColor = 'black';
+    this.userInputColor = 'white';
   }
 }
