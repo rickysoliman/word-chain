@@ -12,6 +12,10 @@
     [placeholder]="nextLetter"
   >
   <div class="word-chain">
-    <div class="word-chain-link" *ngFor="let word of wordChain">{{ word }}</div>
+    <div class="word-chain-row" *ngFor="let word of wordChain">
+      <div class="word-chain-link">
+        {{ word }}   &rarr;
+      </div>
+    </div>
   </div>
 </div>
