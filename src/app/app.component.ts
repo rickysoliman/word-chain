@@ -10,6 +10,7 @@ export class AppComponent implements AfterViewInit {
   alphabet = Array.from({ length: 26 }, (_, i) => String.fromCharCode(65 + i));
   nextLetter: string = this.alphabet[Math.floor(Math.random() * this.alphabet.length)];
   userInput: string = '';
+  userInputColor: 'black' | 'green' | 'red' = 'black';
   wordChain: string[] = [];
 
   ngAfterViewInit(): void {
@@ -22,13 +23,32 @@ export class AppComponent implements AfterViewInit {
   }
 
   onSubmit(): void {
-    // if (!this.validateWord(this.userInput)) return;
-    this.wordChain.push(this.userInput);
-    this.updateNextLetter();
+    this.validateWord() ? this.handleSuccess() : this.handleMistake();
+  }
+
+  handleSuccess(): void {
+    this.userInputColor = 'green';
+    setTimeout(() => {
+      this.wordChain.push(this.userInput);
+      this.updateNextLetter();
+    }, 250);
+  }
+
+  handleMistake(): void {
+    this.userInputColor = 'red';
+    setTimeout(() => {
+      this.userInput = '';
+      this.userInputColor = 'black';
+    }, 500);
+  }
+
+  validateWord(): boolean {
+    return this.userInput[0] === this.nextLetter;
   }
 
   updateNextLetter(): void {
     this.nextLetter = this.userInput[this.userInput.length - 1];
     this.userInput = '';
+    this.userInputColor = 'black';
   }
 }
