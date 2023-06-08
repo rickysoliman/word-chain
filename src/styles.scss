@@ -17,6 +17,11 @@ body {
 }
 
 .header {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.header-title {
     text-decoration: bold;
     text-align: center;
     font-size: 2.5em;

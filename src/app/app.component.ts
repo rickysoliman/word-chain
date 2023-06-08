@@ -25,6 +25,7 @@ export class AppComponent implements AfterViewInit {
   userInput: string = this.nextLetter;
   userInputColor: TextColors = textColors.default;
   wordChain: string[] = [];
+  score: number = 0;
 
   constructor(private http: HttpClient) {}
 
@@ -46,6 +47,7 @@ export class AppComponent implements AfterViewInit {
     this.userInputColor = textColors.success;
     setTimeout(() => {
       this.wordChain.push(this.userInput);
+      this.score += this.userInput.length;
       this.updateNextLetter();
     }, 250);
   }
