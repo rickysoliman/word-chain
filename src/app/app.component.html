@@ -9,6 +9,7 @@
     (keydown.enter)="onSubmit()"
     [(ngModel)]="userInput"
     [style.color]="userInputColor"
+    [placeholder]="nextLetter"
   >
   <div class="word-chain">
     <div class="word-chain-link" *ngFor="let word of wordChain">{{ word }}</div>
