@@ -12,7 +12,7 @@ const alphabet = Array.from({ length: 26 }, (_, i) => String.fromCharCode(65 + i
 export class AppComponent implements AfterViewInit {
   @ViewChild('inputField') inputField!: ElementRef;
   nextLetter: string = alphabet[Math.floor(Math.random() * alphabet.length)];
-  userInput: string = '';
+  userInput: string = this.nextLetter;
   userInputColor: 'black' | 'green' | 'red' = 'black';
   wordChain: string[] = [];
 
@@ -43,13 +43,13 @@ export class AppComponent implements AfterViewInit {
   handleMistake(): void {
     this.userInputColor = 'red';
     setTimeout(() => {
-      this.userInput = '';
+      this.userInput = this.nextLetter;
       this.userInputColor = 'black';
     }, 500);
   }
 
   validateWord() {
-    if (this.userInput[0] !== this.nextLetter) {
+    if (this.userInput[0] !== this.nextLetter || this.wordChain.includes(this.userInput)) {
       this.handleMistake();
       return;
     }
@@ -72,7 +72,7 @@ export class AppComponent implements AfterViewInit {
 
   updateNextLetter(): void {
     this.nextLetter = this.userInput[this.userInput.length - 1];
-    this.userInput = '';
+    this.userInput = this.nextLetter;
     this.userInputColor = 'black';
   }
 }
