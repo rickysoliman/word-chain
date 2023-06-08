@@ -1,1 +1,46 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+    background-color: #dbdbdb;
+    font-family: 'Roboto Mono', monospace;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.app-wrapper {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.header {
+    text-decoration: bold;
+    text-align: center;
+    font-size: 2.5em;
+}
+
+.next-letter {
+    text-decoration: bold;
+    text-align: center;
+    font-size: 2.25em;
+}
+
+.user-input {
+    background: transparent;
+    border: transparent;
+    border-bottom: 1px solid black;
+    text-align: center;
+    margin-top: 40px;
+    padding: 15px;
+    font-size: 2.25em;
+    outline: none;
+}
+
+.word-chain {
+    text-align: center;
+    padding-top: 10px;
+}
+
+.word-chain-link {
+    padding: 10px;
+}
