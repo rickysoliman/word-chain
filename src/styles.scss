@@ -8,6 +8,27 @@ body {
     align-items: center;
 }
 
+.intro-text {
+    width: 65%;
+    text-align: center;
+    background-color: #454545;
+    padding: 20px;
+    border-radius: 15px;
+    border: 4px solid white;
+    margin-bottom: 20px;
+}
+
+.intro-header {
+    text-decoration: bold !important;
+    font-size: 1.5em;
+    padding: 20px;
+}
+
+.intro-sentence {
+    font-size: 1em;
+    padding: 20px;
+}
+
 .post-game-buttons {
     display: flex;
     flex-direction: column;

@@ -14,6 +14,13 @@ const textColors = {
   mistake: TextColors.Mistake,
 };
 
+const introText = [
+  `Welcome to Link-A-Word! Get ready for an exciting word chain challenge!`,
+  `Your mission is to create a chain of words by starting each word with the given letter. You'll be rewarded with 1 point for every letter in your word.`,
+  `But here's the twist: the next word must begin with the last letter of the previous word. `,
+  `Think fast and keep the chain going to maximize your score. Can you create the longest chain and score the most points within the thrilling 60-second time limit? Test your word prowess now!`,
+];
+
 @Component({
   selector: 'app-game',
   templateUrl: './game.component.html',
@@ -29,6 +36,7 @@ export class GameComponent implements AfterViewInit {
   highScore: number = 0;
   hasGameStarted: boolean = false;
   showGameOverScreen: boolean = false;
+  introText = introText;
 
   constructor(private http: HttpClient) {}
 

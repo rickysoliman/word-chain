@@ -1,5 +1,11 @@
 <div class="game-menu" *ngIf="!hasGameStarted && !showGameOverScreen">
   <h1 class="header-title">Link-A-Word</h1>
+  <div class="intro-text">
+    <div class="intro-paragraph" *ngFor="let sentence of introText; let i = index">
+      <div class="intro-header" *ngIf="i === 0">{{ sentence }}</div>
+      <div class="intro-sentence" *ngIf="i !== 0">{{ sentence }}</div>
+    </div>
+  </div>
   <button class="button-success" (click)="playAgain()">START GAME</button>
 </div>
 
