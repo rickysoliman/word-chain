@@ -8,3 +8,74 @@ body {
     align-items: center;
 }
 
+.post-game-buttons {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    gap: 20px;
+}
+
+.button-success {
+    background-color: #4CAF50;
+    color: white;
+    border: 5px solid #039c03;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 1.5em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button-success:hover {
+    background-color: #45a049;
+}
+
+.button-success:active {
+    background-color: #3e874b;
+    transform: translateY(2px);
+}
+
+.button-success:focus {
+    outline: none;
+}
+
+.button-success:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+.button-success:disabled:hover {
+    background-color: #cccccc;
+}
+
+.button-quit {
+  background-color: #DC143C;
+  color: white;
+  border: 5px solid #8B0000;
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-size: 1.5em;
+  cursor: pointer;
+}
+
+.button-quit:hover {
+  background-color: #B22222;
+}
+
+.button-quit:active {
+  background-color: #800000;
+  transform: translateY(2px);
+}
+
+.button-quit:focus {
+  outline: none;
+}
+
+.button-quit:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.button-quit:disabled:hover {
+  background-color: #cccccc;
+}

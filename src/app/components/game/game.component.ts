@@ -26,6 +26,9 @@ export class GameComponent implements AfterViewInit {
   userInputColor: TextColors = textColors.default;
   wordChain: string[] = [];
   score: number = 0;
+  highScore: number = 0;
+  hasGameStarted: boolean = false;
+  showGameOverScreen: boolean = false;
 
   constructor(private http: HttpClient) {}
 
@@ -86,5 +89,35 @@ export class GameComponent implements AfterViewInit {
     this.nextLetter = this.userInput[this.userInput.length - 1];
     this.userInput = this.nextLetter;
     this.userInputColor = textColors.default;
+  }
+
+  handleTimerFinished(): void {
+    this.hasGameStarted = false;
+    this.showGameOverScreen = true;
+  }
+
+  playAgain(): void {
+    this.wordChain = [];
+    if (this.score > this.highScore) {
+      this.highScore = this.score;
+    }
+    this.score = 0;
+    this.nextLetter = alphabet[Math.floor(Math.random() * alphabet.length)];
+    this.userInput = this.nextLetter;
+    this.hasGameStarted = true;
+    this.showGameOverScreen = false;
+    
+    setTimeout(() => {
+      this.inputField.nativeElement.focus();
+    }, 0);
+  }
+
+  quit(): void {
+    this.score = 0;
+    this.highScore = 0;
+    this.nextLetter = alphabet[Math.floor(Math.random() * alphabet.length)];
+    this.userInput = this.nextLetter;
+    this.hasGameStarted = false;
+    this.showGameOverScreen = false;
   }
 }

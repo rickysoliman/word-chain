@@ -1,9 +1,27 @@
-<div class="game-wrapper">
+<div class="game-menu" *ngIf="!hasGameStarted && !showGameOverScreen">
+  <h1 class="header-title">Link-A-Word</h1>
+  <button class="button-success" (click)="playAgain()">START GAME</button>
+</div>
+
+<div class="game-over" *ngIf="showGameOverScreen">
+  <h1>GAME OVER</h1>
+  <h2>Final Score:</h2>
+  <h3>Chain Length: {{ wordChain.length }}</h3>
+  <h3 *ngIf="score <= highScore">Score: {{ score }}</h3>
+  <h3 class="high-score" *ngIf="score > highScore && showGameOverScreen">NEW HIGH SCORE! {{ score }}</h3>
+  <div class="post-game-buttons">
+    <button class="button-success" (click)="playAgain()">PLAY AGAIN?</button>
+    <button class="button-quit" (click)="quit()">QUIT</button>
+  </div>
+</div>
+
+<div class="game-wrapper" *ngIf="hasGameStarted">
+  <div *ngIf="highScore > 0" class="high-score">High Score: {{ highScore }}</div>
   <div class="header">
     <div class="header-chain-length">Chain Length: {{ wordChain.length }}</div>
     <h1 class="header-title">Link-A-Word</h1>
     <div class="header-score">Score: {{ score }}</div>
-    <app-timer></app-timer>
+    <app-timer (timerFinished)="handleTimerFinished()"></app-timer>
   </div>
   <div class="next-letter">{{ nextLetter }}</div>
   <input
