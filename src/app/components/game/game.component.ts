@@ -1,7 +1,7 @@
 import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { forkJoin } from 'rxjs';
-import { alphabet, TextColors, textColors, introText, letterPoints } from './game.model';
+import { alphabet, TextColors, textColors, introText, rules, letterPoints } from './game.model';
 
 @Component({
   selector: 'app-game',
@@ -18,7 +18,9 @@ export class GameComponent implements AfterViewInit {
   highScore: number = 0;
   hasGameStarted: boolean = false;
   showGameOverScreen: boolean = false;
+  showRules: boolean = false;
   introText = introText;
+  rules = rules;
 
   constructor(private http: HttpClient) {}
 
@@ -117,5 +119,13 @@ export class GameComponent implements AfterViewInit {
     this.userInput = this.nextLetter;
     this.hasGameStarted = false;
     this.showGameOverScreen = false;
+  }
+
+  displayRules(): void {
+    this.showRules = true;
+  }
+
+  hideRules(): void {
+    this.showRules = false;
   }
 }

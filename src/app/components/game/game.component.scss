@@ -5,7 +5,16 @@
     flex-direction: column;
     width: auto;
     padding: 30px;
-    margin-top: 65px;
+}
+
+.game-rules {
+    display: flex;
+    flex-direction: column;
+    width: 75vw;
+}
+
+.rule {
+    padding: 10px 0;
 }
 
 .header {
@@ -56,4 +65,10 @@
 .word-chain-link {
     padding: 10px 4px;
     font-size: 1.5rem;
+}
+
+.back-button {
+    text-decoration: none;
+    font-size: 2em;
+    padding-left: 20px;
 }

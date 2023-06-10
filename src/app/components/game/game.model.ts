@@ -11,11 +11,17 @@ export const textColors = {
   mistake: TextColors.Mistake,
 };
 
-export const introText = [
-  `Welcome to Link-A-Word! Get ready for an exciting word chain challenge!`,
-  `Your mission is to create a chain of words by starting each word with the given letter. Every letter in your word gets you points, with the least common letters being worth the most.`,
-  `But here's the twist: the next word must begin with the last letter of the previous word. `,
-  `Think fast and keep the chain going to maximize your score. Can you create the longest chain and score the most points within the thrilling 60-second time limit? Test your word prowess now!`,
+export const introText = `Welcome to Link-A-Word! Get ready for an exciting word chain challenge!`;
+
+export const rules = [
+    `At the start of the game you will be given a letter at random. Your first word must begin with that letter. From that point on, every succeeding word must begin with the LAST LETTER OF THE PREVIOUS WORD.`,
+    `Every word must be a valid word in the English language.`,
+    `Every word must be spelled correctly.`,
+    `Every word must be TWO OR MORE LETTERS LONG.`,
+    `No word will be accepted more than once.`,
+    `Names of people or places will not be accepted.`,
+    `Offensive swear words or slurs will not be accepted.`,
+    `You will have 60 seconds to build your chain and score as many points possible.`,
 ];
 
 export const letterPoints: { [key: string]: number } = { // arranged by frequency

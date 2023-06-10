@@ -8,6 +8,17 @@ body {
     align-items: center;
 }
 
+a {
+  color: white;
+  transition: color 0.3s ease;
+}
+a:hover {
+  color: rgb(255, 0, 0);
+}
+a:visited {
+  color: white;
+}
+
 .intro-text {
     width: 65%;
     text-align: center;
