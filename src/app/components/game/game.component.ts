@@ -1,25 +1,7 @@
 import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { forkJoin } from 'rxjs';
-
-const alphabet = Array.from({ length: 26 }, (_, i) => String.fromCharCode(65 + i));
-enum TextColors {
-  Default = 'white',
-  Success = '#00FF00',
-  Mistake = '#DC143C',
-};
-const textColors = {
-  default: TextColors.Default,
-  success: TextColors.Success,
-  mistake: TextColors.Mistake,
-};
-
-const introText = [
-  `Welcome to Link-A-Word! Get ready for an exciting word chain challenge!`,
-  `Your mission is to create a chain of words by starting each word with the given letter. You'll be rewarded with 1 point for every letter in your word.`,
-  `But here's the twist: the next word must begin with the last letter of the previous word. `,
-  `Think fast and keep the chain going to maximize your score. Can you create the longest chain and score the most points within the thrilling 60-second time limit? Test your word prowess now!`,
-];
+import { alphabet, TextColors, textColors, introText, letterPoints } from './game.model';
 
 @Component({
   selector: 'app-game',
@@ -54,11 +36,19 @@ export class GameComponent implements AfterViewInit {
     this.validateWord();
   }
 
+  calculateScore(): number {
+    let score = 0;
+    for (let i = 1; i < this.userInput.length; i++) {
+      score += letterPoints[this.userInput[i]];
+    }
+    return score;
+  }
+
   handleSuccess(): void {
     this.userInputColor = textColors.success;
     setTimeout(() => {
       this.wordChain.push(this.userInput);
-      this.score += this.userInput.length;
+      this.score += this.calculateScore();
       this.updateNextLetter();
     }, 250);
   }
