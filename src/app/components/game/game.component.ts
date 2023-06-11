@@ -1,7 +1,7 @@
 import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { forkJoin } from 'rxjs';
-import { alphabet, TextColors, textColors, introText, rules, letterPoints } from './game.model';
+import { alphabet, Word, TextColors, textColors, introText, rules, letterPoints } from './game.model';
 
 @Component({
   selector: 'app-game',
@@ -14,6 +14,7 @@ export class GameComponent implements AfterViewInit {
   userInput: string = this.nextLetter;
   userInputColor: TextColors = textColors.default;
   wordChain: string[] = [];
+  wordCache = new Map();
   score: number = 0;
   highScore: number = 0;
   hasGameStarted: boolean = false;
@@ -27,7 +28,9 @@ export class GameComponent implements AfterViewInit {
   constructor(private http: HttpClient) {}
 
   ngAfterViewInit(): void {
-    this.inputField.nativeElement.focus();
+    if (this.hasGameStarted) {
+      this.inputField.nativeElement.focus();
+    }
   }
 
   onInput(event: Event): void {
@@ -48,10 +51,17 @@ export class GameComponent implements AfterViewInit {
     return score;
   }
 
-  handleSuccess(): void {
+  handleSuccess(dictionaryResp: any): void {
+    console.log({ dictionaryResp });
     this.userInputColor = textColors.success;
+    const word: Word = {
+      index: this.wordChain.length,
+      definitions: dictionaryResp[0].meanings,
+    };
     setTimeout(() => {
       this.wordChain.push(this.userInput);
+      this.wordCache.set(this.userInput, word);
+      console.log(this.wordCache.get(this.userInput));
       this.score += this.calculateScore();
       this.updateNextLetter();
     }, 250);
@@ -66,7 +76,7 @@ export class GameComponent implements AfterViewInit {
   }
 
   validateWord() {
-    if (this.userInput[0] !== this.nextLetter || this.userInput.length === 1 || this.wordChain.includes(this.userInput)) {
+    if (this.userInput[0] !== this.nextLetter || this.userInput.length === 1 || this.wordCache.has(this.userInput)) {
       this.handleMistake();
       return;
     }
@@ -79,7 +89,7 @@ export class GameComponent implements AfterViewInit {
       this.http.get(profanityUrl),
     ]).subscribe(
       ([dictionaryResp, containsProfanity]) => {
-        containsProfanity ? this.handleMistake() : this.handleSuccess();
+        containsProfanity ? this.handleMistake() : this.handleSuccess(dictionaryResp);
       },
       (error: any) => {
         this.handleMistake();
@@ -129,5 +139,15 @@ export class GameComponent implements AfterViewInit {
 
   hideRules(): void {
     this.showRules = false;
+  }
+
+  dropdownStates: { [word: string]: boolean } = {};
+
+  toggleDropdown(word: string): void {
+    this.dropdownStates[word] = !this.dropdownStates[word];
+  }
+
+  isDropdownOpen(word: string): boolean {
+    return this.dropdownStates[word] || false;
   }
 }

@@ -1,5 +1,14 @@
 export const alphabet = Array.from({ length: 26 }, (_, i) => String.fromCharCode(65 + i));
 
+interface Definition {
+  partOfSpeech: string;
+  definition: string;
+}
+export interface Word {
+  index: number;
+  definitions: Definition[];
+};
+
 export enum TextColors {
   Default = 'white',
   Success = '#00FF00',

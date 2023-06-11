@@ -1,10 +1,64 @@
-.game-wrapper, .game-over, .game-menu {
+.game-wrapper, .game-over, .game-menu, .word {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     width: auto;
     padding: 30px;
+}
+
+.chain-results {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 75vw;
+}
+
+.chain-results-word {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.chain-results-word {
+    list-style: none;
+    width: 65%;
+    text-align: left;
+    background-color: #454545;
+    padding: 20px;
+    border-radius: 15px;
+    border: 4px solid white;
+    margin-bottom: 20px;
+}
+
+.chain-results-word-header {
+    text-align: center;
+    font-size: 1.5em;
+    text-decoration: bold;
+}
+
+.definitions li {
+    padding: 10px 0;
+}
+
+.word-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.word-text {
+    font-size: 1.25em;
+    text-decoration: bold;
+}
+
+.arrow-icon {
+    font-size: 1.2em;
+    transition: transform 0.2s ease;
+}
+.arrow-icon.open {
+    transform: rotate(90deg);
 }
 
 .game-rules {
