@@ -24,6 +24,7 @@ export class GameComponent implements AfterViewInit {
   rules = rules;
   alphabet = alphabet;
   letterPoints = letterPoints;
+  dropdownStates: { [word: string]: boolean } = {};
 
   constructor(private http: HttpClient) {}
 
@@ -121,6 +122,7 @@ export class GameComponent implements AfterViewInit {
 
   playAgain(): void {
     this.wordChain = [];
+    this.wordCache = new Map();
     if (this.score > this.highScore) {
       this.highScore = this.score;
     }
@@ -151,8 +153,6 @@ export class GameComponent implements AfterViewInit {
   hideRules(): void {
     this.showRules = false;
   }
-
-  dropdownStates: { [word: string]: boolean } = {};
 
   toggleDropdown(word: string): void {
     this.dropdownStates[word] = !this.dropdownStates[word];
