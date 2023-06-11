@@ -6,6 +6,7 @@
   <h1 class="header-title">Link-A-Word</h1>
   <div class="intro-text">
     <div class="intro-header">{{ introText }}</div>
+    <div *ngIf="highScore > 0" class="high-score">YOUR HIGH SCORE: {{ highScore.toLocaleString() }}</div>
     <a href="#" class="show-rules" (click)="displayRules()">Rules</a>
   </div>
   <button class="button-success" (click)="playAgain()">START GAME</button>

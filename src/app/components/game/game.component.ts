@@ -16,7 +16,7 @@ export class GameComponent implements AfterViewInit {
   wordChain: string[] = [];
   wordCache = new Map();
   score: number = 0;
-  highScore: number = 0;
+  highScore: number = Number(localStorage.getItem('highScore')) || 0;
   hasGameStarted: boolean = false;
   showGameOverScreen: boolean = false;
   showRules: boolean = false;
@@ -125,6 +125,7 @@ export class GameComponent implements AfterViewInit {
     this.wordCache = new Map();
     if (this.score > this.highScore) {
       this.highScore = this.score;
+      localStorage.setItem('highScore', this.highScore.toString());
     }
     this.score = 0;
     this.nextLetter = alphabet[Math.floor(Math.random() * alphabet.length)];
@@ -139,7 +140,6 @@ export class GameComponent implements AfterViewInit {
 
   quit(): void {
     this.score = 0;
-    this.highScore = 0;
     this.nextLetter = alphabet[Math.floor(Math.random() * alphabet.length)];
     this.userInput = this.nextLetter;
     this.hasGameStarted = false;

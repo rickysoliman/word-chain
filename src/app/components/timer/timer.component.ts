@@ -7,7 +7,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class TimerComponent implements OnInit {
   @Output() timerFinished: EventEmitter<void> = new EventEmitter<void>();
-  timeLeft: number = 60; // Initial time in seconds
+  timeLeft: number = 60;
   timerInterval: any;
 
   ngOnInit() {
