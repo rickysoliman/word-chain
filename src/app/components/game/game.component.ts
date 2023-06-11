@@ -21,6 +21,8 @@ export class GameComponent implements AfterViewInit {
   showRules: boolean = false;
   introText = introText;
   rules = rules;
+  alphabet = alphabet;
+  letterPoints = letterPoints;
 
   constructor(private http: HttpClient) {}
 
