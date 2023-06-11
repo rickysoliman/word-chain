@@ -54,15 +54,26 @@ export class GameComponent implements AfterViewInit {
   handleSuccess(dictionaryResp: any): void {
     console.log({ dictionaryResp });
     this.userInputColor = textColors.success;
+    const stats = [];
+    for (let i = 1; i < this.userInput.length; i++) {
+      stats.push({
+        letter: this.userInput[i],
+        points: this.letterPoints[this.userInput[i]],
+      });
+    }
+    const totalPoints = this.calculateScore();
+    console.log(stats);
     const word: Word = {
       index: this.wordChain.length,
       definitions: dictionaryResp[0].meanings,
+      stats,
+      totalPoints,
     };
     setTimeout(() => {
       this.wordChain.push(this.userInput);
       this.wordCache.set(this.userInput, word);
       console.log(this.wordCache.get(this.userInput));
-      this.score += this.calculateScore();
+      this.score += totalPoints;
       this.updateNextLetter();
     }, 250);
   }
@@ -149,5 +160,9 @@ export class GameComponent implements AfterViewInit {
 
   isDropdownOpen(word: string): boolean {
     return this.dropdownStates[word] || false;
+  }
+
+  getKeys(obj: any): string[] {
+    return Object.keys(obj);
   }
 }

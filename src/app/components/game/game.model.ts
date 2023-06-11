@@ -4,9 +4,15 @@ interface Definition {
   partOfSpeech: string;
   definition: string;
 }
+interface Letter {
+  letter: string;
+  points: number;
+}
 export interface Word {
   index: number;
   definitions: Definition[];
+  stats: Letter[];
+  totalPoints: number;
 };
 
 export enum TextColors {

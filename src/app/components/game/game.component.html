@@ -43,15 +43,25 @@
         <span class="word-text">{{ word }}</span>
         <span class="arrow-icon" [class.open]="isDropdownOpen(word)">&#9658;</span>
       </div>
-      <ul class="definitions" *ngIf="isDropdownOpen(word)">
-        <li *ngFor="let definition of wordCache.get(word).definitions">
-          <p><strong>{{ definition.partOfSpeech }}</strong></p>
-          <p>{{ definition.definitions[0].definition }}</p>
-          <i *ngIf="definition.synonyms.length > 0"><strong>Synonyms:</strong> {{ definition.synonyms.join(', ') }}</i>
-          <i *ngIf="definition.antonyms.length > 0"><strong>Antonyms:</strong> {{ definition.antonyms.join(', ') }}</i>
-          <i *ngIf="definition.example"><strong>Example:</strong> {{ definition.example }}</i>
-        </li>
-      </ul>
+      <span *ngIf="isDropdownOpen(word)">
+        <ul class="definitions">
+          <li *ngFor="let definition of wordCache.get(word).definitions">
+            <p><strong>{{ definition.partOfSpeech }}</strong></p>
+            <p>{{ definition.definitions[0].definition }}</p>
+            <i *ngIf="definition.synonyms.length > 0"><strong>Synonyms:</strong> {{ definition.synonyms.join(', ') }}</i>
+            <i *ngIf="definition.antonyms.length > 0"><strong>Antonyms:</strong> {{ definition.antonyms.join(', ') }}</i>
+            <i *ngIf="definition.example"><strong>Example:</strong> {{ definition.example }}</i>
+          </li>
+        </ul>
+        <hr>
+        <div class="stats-header">POINTS</div>
+        <ul class="stats">
+          <li *ngFor="let letter of wordCache.get(word).stats" class="stats-item">
+            <span class="letter-text">{{ letter.letter }} .......... {{ letter.points }}</span>
+          </li>
+          <p class="total-points"><strong>Total: {{ wordCache.get(word).totalPoints }}</strong></p>
+        </ul>
+      </span>
     </div>
   </div>
   <div class="post-game-buttons">
