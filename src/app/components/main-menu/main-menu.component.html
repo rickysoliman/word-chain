@@ -1,4 +1,4 @@
-<div *ngIf="!showRules">
+<div class="menu-wrapper" *ngIf="!showRules">
   <h1 class="header-title">Link-A-Word</h1>
   <div class="intro-text">
     <div class="intro-header">{{ introText }}</div>
@@ -8,7 +8,7 @@
   <button class="button-success" (click)="startGame()">START GAME</button>
 </div>
 
-<div *ngIf="showRules">
+<div class="rules-wrapper" *ngIf="showRules">
   <div class="game-rules">
     <a class="back-button" href="#" (click)="hideRules()">&#8592;</a>
     <h1 class="header-title rules">Rules</h1>

@@ -1,117 +1,10 @@
-.game-wrapper, .game-over, .game-menu, .word {
+.game-wrapper, .game-menu, .word {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     width: auto;
     padding: 30px;
-}
-
-.chain-results {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 75vw;
-}
-
-.chain-results-word {
-    display: flex;
-    flex-direction: column;
-    font-family: 'Times New Roman', Times, serif;
-}
-
-.chain-results-word {
-    list-style: none;
-    width: 65%;
-    text-align: left;
-    background-color: #454545;
-    padding: 20px;
-    border-radius: 15px;
-    border: 4px solid white;
-    margin-bottom: 20px;
-}
-
-.chain-results-word-header {
-    text-align: center;
-    font-size: 1.5em;
-    text-decoration: bold;
-}
-
-.definitions li {
-    padding: 10px 0;
-}
-
-.stats {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-}
-
-.stats-item {
-    margin-bottom: 5px;
-}
-
-.total-points {
-    margin-top: 10px;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 16px;
-    color: #FFD700;
-}
-
-.word-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    cursor: pointer;
-}
-
-.stats-header {
-    display: flex;
-    justify-content: start;
-    align-items: center;
-    padding-top: 15px;
-}
-
-.word-text {
-    font-size: 1.25em;
-    text-decoration: bold;
-}
-
-.arrow-icon {
-    font-size: 1.2em;
-    transition: transform 0.2s ease;
-}
-.arrow-icon.open {
-    transform: rotate(90deg);
-}
-
-.game-rules {
-    display: flex;
-    flex-direction: column;
-    width: 75vw;
-}
-
-.point-system {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 50vw;
-}
-
-.point-system-list {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-}
-
-.point-system-list li {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
 }
 
 .letter-text {
@@ -130,10 +23,6 @@
     font-weight: bold;
 }
 
-.rule {
-    padding: 10px 0;
-}
-
 .header {
     display: flex;
     justify-content: space-evenly;
@@ -149,10 +38,6 @@
     font-size: 1em;
     text-align: center;
     width: 65%;
-}
-
-.high-score {
-    color: #FFD700;
 }
 
 .next-letter {
@@ -188,10 +73,4 @@
 .word-chain-link {
     padding: 10px 4px;
     font-size: 1.5rem;
-}
-
-.back-button {
-    text-decoration: none;
-    font-size: 2em;
-    padding-left: 20px;
 }

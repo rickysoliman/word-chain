@@ -134,6 +134,8 @@ export class GameComponent implements AfterViewInit {
   }
 
   quit(): void {
+    this.highScore = this.score;
+    localStorage.setItem('highScore', this.highScore.toString());
     this.score = 0;
     this.nextLetter = alphabet[Math.floor(Math.random() * alphabet.length)];
     this.userInput = this.nextLetter;
