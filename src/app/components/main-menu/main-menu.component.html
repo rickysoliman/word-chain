@@ -1,0 +1,28 @@
+<div *ngIf="!showRules">
+  <h1 class="header-title">Link-A-Word</h1>
+  <div class="intro-text">
+    <div class="intro-header">{{ introText }}</div>
+    <div *ngIf="highScore > 0" class="high-score">YOUR HIGH SCORE: {{ highScore.toLocaleString() }}</div>
+    <a href="#" class="show-rules" (click)="displayRules()">Rules</a>
+  </div>
+  <button class="button-success" (click)="startGame()">START GAME</button>
+</div>
+
+<div *ngIf="showRules">
+  <div class="game-rules">
+    <a class="back-button" href="#" (click)="hideRules()">&#8592;</a>
+    <h1 class="header-title rules">Rules</h1>
+    <ul class="rules-list">
+      <li class="rule" *ngFor="let rule of rules">{{ rule }}</li>
+    </ul>
+  </div>
+  <div class="point-system">
+    <h1 class="header-title point-system">Point System</h1>
+    <h3 class="header-subtitle">The least common letters in the English language are worth the most points.</h3>
+    <ul class="point-system-list">
+      <li class="letter" *ngFor="let letter of alphabet">
+        <span class="letter-text">{{ letter }} .......... {{ letterPoints[letter] }}</span>
+      </li>
+    </ul>
+  </div>
+</div>

@@ -1,1 +1,19 @@
-<app-game></app-game>
+<ng-container *ngTemplateOutlet="currentStateTemplate"></ng-container>
+
+<ng-template #mainMenu>
+    <app-main-menu (startGameEvent)="updateAppState(1)"></app-main-menu>
+</ng-template>
+
+<ng-template #game>
+    <app-game (timerFinished)="handleTimerFinished($event)"></app-game>
+</ng-template>
+
+<ng-template #gameOver>
+    <app-game-over
+        [wordChain]="wordChain"
+        [wordCache]="wordCache"
+        [score]="score"
+        (playAgainEvent)="updateAppState(1)" 
+        (quitEvent)="updateAppState(0)"
+    ></app-game-over>
+</ng-template>

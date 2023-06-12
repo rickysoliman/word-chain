@@ -1,7 +1,7 @@
-import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, ViewChild, ElementRef, AfterViewInit, Output, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { forkJoin } from 'rxjs';
-import { alphabet, Word, TextColors, textColors, introText, rules, letterPoints } from './game.model';
+import { alphabet, Word, TextColors, textColors, letterPoints, TimerEventData } from '../../game.model';
 
 @Component({
   selector: 'app-game',
@@ -10,6 +10,8 @@ import { alphabet, Word, TextColors, textColors, introText, rules, letterPoints 
 })
 export class GameComponent implements AfterViewInit {
   @ViewChild('inputField') inputField!: ElementRef;
+  @Output() timerFinished: EventEmitter<TimerEventData> = new EventEmitter<TimerEventData>();
+
   nextLetter: string = alphabet[Math.floor(Math.random() * alphabet.length)];
   userInput: string = this.nextLetter;
   userInputColor: TextColors = textColors.default;
@@ -17,21 +19,13 @@ export class GameComponent implements AfterViewInit {
   wordCache = new Map();
   score: number = 0;
   highScore: number = Number(localStorage.getItem('highScore')) || 0;
-  hasGameStarted: boolean = false;
-  showGameOverScreen: boolean = false;
-  showRules: boolean = false;
-  introText = introText;
-  rules = rules;
   alphabet = alphabet;
   letterPoints = letterPoints;
-  dropdownStates: { [word: string]: boolean } = {};
 
   constructor(private http: HttpClient) {}
 
   ngAfterViewInit(): void {
-    if (this.hasGameStarted) {
-      this.inputField.nativeElement.focus();
-    }
+    this.inputField.nativeElement.focus();
   }
 
   onInput(event: Event): void {
@@ -116,8 +110,11 @@ export class GameComponent implements AfterViewInit {
   }
 
   handleTimerFinished(): void {
-    this.hasGameStarted = false;
-    this.showGameOverScreen = true;
+    this.timerFinished.emit({
+      chain: this.wordChain,
+      cache: this.wordCache,
+      score: this.score,
+    });
   }
 
   playAgain(): void {
@@ -130,8 +127,6 @@ export class GameComponent implements AfterViewInit {
     this.score = 0;
     this.nextLetter = alphabet[Math.floor(Math.random() * alphabet.length)];
     this.userInput = this.nextLetter;
-    this.hasGameStarted = true;
-    this.showGameOverScreen = false;
     
     setTimeout(() => {
       this.inputField.nativeElement.focus();
@@ -142,27 +137,5 @@ export class GameComponent implements AfterViewInit {
     this.score = 0;
     this.nextLetter = alphabet[Math.floor(Math.random() * alphabet.length)];
     this.userInput = this.nextLetter;
-    this.hasGameStarted = false;
-    this.showGameOverScreen = false;
-  }
-
-  displayRules(): void {
-    this.showRules = true;
-  }
-
-  hideRules(): void {
-    this.showRules = false;
-  }
-
-  toggleDropdown(word: string): void {
-    this.dropdownStates[word] = !this.dropdownStates[word];
-  }
-
-  isDropdownOpen(word: string): boolean {
-    return this.dropdownStates[word] || false;
-  }
-
-  getKeys(obj: any): string[] {
-    return Object.keys(obj);
   }
 }

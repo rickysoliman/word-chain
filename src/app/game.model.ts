@@ -67,3 +67,9 @@ export const letterPoints: { [key: string]: number } = { // arranged by frequenc
   Q: 250,
   Z: 260,
 };
+
+export interface TimerEventData {
+  chain: string[],
+  cache: Map<string, Word>,
+  score: number,
+}
