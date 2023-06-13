@@ -1,4 +1,4 @@
-import { Component, ViewChild, ElementRef, AfterViewInit, Output, EventEmitter } from '@angular/core';
+import { Component, ViewChild, ElementRef, Output, EventEmitter, OnInit, AfterViewInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { forkJoin } from 'rxjs';
 import { alphabet, Word, TextColors, textColors, letterPoints, TimerEventData } from '../../game.model';
@@ -12,7 +12,8 @@ export class GameComponent implements AfterViewInit {
   @ViewChild('inputField') inputField!: ElementRef;
   @Output() timerFinished: EventEmitter<TimerEventData> = new EventEmitter<TimerEventData>();
 
-  nextLetter: string = alphabet[Math.floor(Math.random() * alphabet.length)];
+  countdown: string | null = '3';
+  nextLetter: string = '';
   userInput: string = this.nextLetter;
   userInputColor: TextColors = textColors.default;
   wordChain: string[] = [];
@@ -25,7 +26,35 @@ export class GameComponent implements AfterViewInit {
   constructor(private http: HttpClient) {}
 
   ngAfterViewInit(): void {
+    this.startCountdown();
+  }
+
+  focusOnInput(): void {
     this.inputField.nativeElement.focus();
+  }
+
+  startCountdown(): void {
+    const countdownValues = ['3', '2', '1', 'GO'];
+    let countdownIndex = 0;
+    
+    const displayCountdown = () => {
+      if (countdownIndex >= countdownValues.length) {
+        this.countdown = null;
+        this.setNextLetter();
+        this.focusOnInput();
+      } else {
+        this.countdown = countdownValues[countdownIndex];
+        countdownIndex++;
+        setTimeout(displayCountdown, 1000);
+      }
+    };
+
+    displayCountdown();
+  }
+
+  setNextLetter(): void {
+    this.nextLetter = alphabet[Math.floor(Math.random() * alphabet.length)];
+    this.userInput = this.nextLetter;
   }
 
   onInput(event: Event): void {
@@ -47,7 +76,6 @@ export class GameComponent implements AfterViewInit {
   }
 
   handleSuccess(dictionaryResp: any): void {
-    console.log({ dictionaryResp });
     this.userInputColor = textColors.success;
     const stats = [];
     for (let i = 1; i < this.userInput.length; i++) {
@@ -57,7 +85,6 @@ export class GameComponent implements AfterViewInit {
       });
     }
     const totalPoints = this.calculateScore();
-    console.log(stats);
     const word: Word = {
       index: this.wordChain.length,
       definitions: dictionaryResp[0].meanings,
@@ -67,7 +94,6 @@ export class GameComponent implements AfterViewInit {
     setTimeout(() => {
       this.wordChain.push(this.userInput);
       this.wordCache.set(this.userInput, word);
-      console.log(this.wordCache.get(this.userInput));
       this.score += totalPoints;
       this.updateNextLetter();
     }, 250);
@@ -125,7 +151,7 @@ export class GameComponent implements AfterViewInit {
       localStorage.setItem('highScore', this.highScore.toString());
     }
     this.score = 0;
-    this.nextLetter = alphabet[Math.floor(Math.random() * alphabet.length)];
+    this.setNextLetter();
     this.userInput = this.nextLetter;
     
     setTimeout(() => {
@@ -137,7 +163,7 @@ export class GameComponent implements AfterViewInit {
     this.highScore = this.score;
     localStorage.setItem('highScore', this.highScore.toString());
     this.score = 0;
-    this.nextLetter = alphabet[Math.floor(Math.random() * alphabet.length)];
+    this.setNextLetter();
     this.userInput = this.nextLetter;
   }
 }

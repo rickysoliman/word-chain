@@ -7,6 +7,16 @@
     padding: 30px;
 }
 
+.countdown {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    font-size: 5em;
+    color: red;
+}
+
 .letter-text {
     font-weight: bold;
 }
@@ -44,6 +54,7 @@
     text-decoration: bold;
     text-align: center;
     font-size: 2.25em;
+    height: 21px;
 }
 
 .user-input {
@@ -56,6 +67,7 @@
     font-size: 2.25em;
     outline: none;
     max-width: fit-content;
+    height: 21px;
 }
 
 .word-chain {

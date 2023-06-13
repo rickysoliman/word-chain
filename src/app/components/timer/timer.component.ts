@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-timer',
@@ -6,12 +6,21 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./timer.component.scss']
 })
 export class TimerComponent implements OnInit {
+  @Input() hasGameStarted: boolean = false;
   @Output() timerFinished: EventEmitter<void> = new EventEmitter<void>();
   timeLeft: number = 60;
   timerInterval: any;
 
   ngOnInit() {
-    this.startTimer();
+    if (this.hasGameStarted) {
+      this.startTimer();
+    }
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['hasGameStarted'] && changes['hasGameStarted'].currentValue) {
+      this.startTimer();
+    }
   }
 
   startTimer() {

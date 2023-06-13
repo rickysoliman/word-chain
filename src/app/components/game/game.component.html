@@ -1,10 +1,12 @@
+<div class="countdown" *ngIf="countdown !== null">{{ countdown }}</div>
+
 <div class="game-wrapper">
   <div *ngIf="highScore > 0" class="high-score">High Score: {{ highScore.toLocaleString() }}</div>
   <div class="header">
     <div class="header-chain-length">Chain Length: {{ wordChain.length }}</div>
     <h1 class="header-title">Link-A-Word</h1>
     <div class="header-score">Score: {{ score.toLocaleString() }}</div>
-    <app-timer (timerFinished)="handleTimerFinished()"></app-timer>
+    <app-timer [hasGameStarted]="countdown === null" (timerFinished)="handleTimerFinished()"></app-timer>
   </div>
   <div class="next-letter">{{ nextLetter }}</div>
   <input
