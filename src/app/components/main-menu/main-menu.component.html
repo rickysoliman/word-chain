@@ -17,8 +17,9 @@
     </ul>
   </div>
   <div class="point-system">
-    <h1 class="header-title point-system">Point System</h1>
+    <h1 class="header-title point-system">Scoring System</h1>
     <h3 class="header-subtitle">{{ pointSystemSubtitle }}</h3>
+    <button id="sort-button" class="button-neutral" (click)="toggleSorting()">Sort {{ alphabeticalSorting ? 'by points' : 'alphabetically' }}</button>
     <ul class="point-system-list">
       <li class="letter" *ngFor="let letter of alphabet">
         <span class="letter-text">{{ letter }} .......... {{ letterPoints[letter] }}</span>

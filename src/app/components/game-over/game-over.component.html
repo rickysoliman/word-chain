@@ -27,7 +27,7 @@
           <li *ngFor="let letter of wordCache.get(word).stats" class="stats-item">
             <span class="letter-text">{{ letter.letter }} .......... {{ letter.points }}</span>
           </li>
-          <p class="total-points"><strong>Total: {{ wordCache.get(word).totalPoints }}</strong></p>
+          <p class="total-points"><strong>Total: {{ wordCache.get(word).totalPoints.toLocaleString() }}</strong></p>
         </ul>
       </span>
     </div>

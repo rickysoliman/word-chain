@@ -81,35 +81,68 @@ a:visited {
 }
 
 .button-quit {
-  background-color: #DC143C;
-  color: white;
-  border: 5px solid #8B0000;
-  border-radius: 10px;
-  padding: 10px 20px;
-  font-size: 1.5em;
-  cursor: pointer;
+    background-color: #DC143C;
+    color: white;
+    border: 5px solid #8B0000;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 1.5em;
+    cursor: pointer;
 }
 
 .button-quit:hover {
-  background-color: #B22222;
+    background-color: #B22222;
 }
 
 .button-quit:active {
-  background-color: #800000;
-  transform: translateY(2px);
+    background-color: #800000;
+    transform: translateY(2px);
 }
 
 .button-quit:focus {
-  outline: none;
+    outline: none;
 }
 
 .button-quit:disabled {
-  background-color: #cccccc;
-  cursor: not-allowed;
+    background-color: #cccccc;
+    cursor: not-allowed;
 }
 
 .button-quit:disabled:hover {
-  background-color: #cccccc;
+    background-color: #cccccc;
+}
+
+.button-neutral {
+    background-color: #707070;
+    color: white;
+    border: 5px solid #4a4a4a;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 1.5em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button-neutral:hover {
+    background-color: #5a5a5a;
+}
+
+.button-neutral:active {
+    background-color: #494949;
+    transform: translateY(2px);
+}
+
+.button-neutral:focus {
+    outline: none;
+}
+
+.button-neutral:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+.button-neutral:disabled:hover {
+    background-color: #cccccc;
 }
 
 .high-score {

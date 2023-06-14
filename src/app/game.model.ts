@@ -36,7 +36,7 @@ export const rules = [
     `No word will be accepted more than once.`,
     `Names of people or places will not be accepted.`,
     `Offensive swear words or slurs will not be accepted.`,
-    `You will have 60 seconds to build your chain and score as many points possible.`,
+    `You will have 60 seconds to build your chain and score as many points as possible.`,
 ];
 
 export const pointSystemSubtitle = `The scoring system rewards strategic play by assigning higher points to the least common letters in the English language, such as X, J, Q, and Z, for example. To maximize your score, aim for longer words that contain these rarer letters. Note that the first letter of every word is excluded from the scoring calculation, as it is always provided.`;

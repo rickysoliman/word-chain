@@ -16,6 +16,7 @@ export class MainMenuComponent {
     letterPoints = letterPoints;
     highScore: number = Number(localStorage.getItem('highScore')) || 0;
     showRules: boolean = false;
+    alphabeticalSorting = true;
 
     displayRules(): void {
         this.showRules = true;
@@ -27,5 +28,18 @@ export class MainMenuComponent {
 
     startGame(): void {
         this.startGameEvent.emit();
+    }
+
+    toggleSorting() {
+        this.alphabeticalSorting = !this.alphabeticalSorting;
+        this.sortPointSystemList();
+    }
+
+    sortPointSystemList() {
+        if (this.alphabeticalSorting) {
+            this.alphabet.sort();
+        } else {
+            this.alphabet.sort((a, b) => this.letterPoints[a] - this.letterPoints[b]);
+        }
     }
 }
