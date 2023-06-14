@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { alphabet, TextColors, textColors, introText, rules, letterPoints } from '../../game.model';
+import { alphabet, introText, rules, pointSystemSubtitle, letterPoints } from '../../game.model';
 
 @Component({
     selector: 'app-main-menu',
@@ -12,6 +12,7 @@ export class MainMenuComponent {
     alphabet = alphabet;
     introText = introText;
     rules = rules;
+    pointSystemSubtitle = pointSystemSubtitle;
     letterPoints = letterPoints;
     highScore: number = Number(localStorage.getItem('highScore')) || 0;
     showRules: boolean = false;

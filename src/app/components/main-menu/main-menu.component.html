@@ -18,7 +18,7 @@
   </div>
   <div class="point-system">
     <h1 class="header-title point-system">Point System</h1>
-    <h3 class="header-subtitle">The least common letters in the English language are worth the most points.</h3>
+    <h3 class="header-subtitle">{{ pointSystemSubtitle }}</h3>
     <ul class="point-system-list">
       <li class="letter" *ngFor="let letter of alphabet">
         <span class="letter-text">{{ letter }} .......... {{ letterPoints[letter] }}</span>
