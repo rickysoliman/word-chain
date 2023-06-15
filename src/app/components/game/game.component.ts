@@ -70,7 +70,7 @@ export class GameComponent implements AfterViewInit {
   calculateScore(): number {
     let score = 0;
     for (let i = 1; i < this.userInput.length; i++) {
-      score += letterPoints[this.userInput[i]];
+        score += letterPoints[this.userInput[i]];
     }
     return score;
   }
@@ -108,7 +108,8 @@ export class GameComponent implements AfterViewInit {
   }
 
   validateWord() {
-    if (this.userInput[0] !== this.nextLetter || this.userInput.length === 1 || this.wordCache.has(this.userInput)) {
+    const alphabetRegex = /^[a-zA-Z]+$/;
+    if (this.userInput[0] !== this.nextLetter || this.userInput.length === 1 || this.wordCache.has(this.userInput) || !alphabetRegex.test(this.userInput)) {
       this.handleMistake();
       return;
     }

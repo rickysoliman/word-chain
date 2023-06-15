@@ -33,6 +33,7 @@ export const rules = [
     `Every word must be a valid word in the English language.`,
     `Every word must be spelled correctly.`,
     `Every word must be TWO OR MORE LETTERS LONG.`,
+    `Every word must only consist of letters from the alphabet. (Numbers, spaces, and special characters will not be accepted.)`,
     `No word will be accepted more than once.`,
     `Names of people or places will not be accepted.`,
     `Offensive swear words or slurs will not be accepted.`,
