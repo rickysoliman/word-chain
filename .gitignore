@@ -1,2 +1,3 @@
 node_modules/
 .angular/cache/15.2.8/
+/dist/

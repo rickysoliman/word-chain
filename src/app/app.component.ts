@@ -1,4 +1,4 @@
-import { Component, ViewChild, TemplateRef } from '@angular/core';
+import { Component, ViewChild, TemplateRef, ChangeDetectorRef } from '@angular/core';
 import { TimerEventData, Word } from './game.model';
 
 @Component({
@@ -17,6 +17,12 @@ export class AppComponent {
   wordCache: Map<string, Word> = new Map();
   score: number = 0;
 
+  constructor(private cdRef: ChangeDetectorRef) {}
+
+  ngAfterViewInit(): void {
+    this.cdRef.detectChanges();
+  }
+
   updateAppState(index: number): void {
     this.appStateIndex = index;
   }
@@ -26,10 +32,12 @@ export class AppComponent {
     this.wordCache = eventData.cache;
     this.score = eventData.score;
     this.updateAppState(2);
+    this.cdRef.detectChanges();
   }
 
   handleQuitButtonClicked(): void {
     this.updateAppState(0);
+    this.cdRef.detectChanges();
   }
 
   get currentStateTemplate(): TemplateRef<any> {
