@@ -1,6 +1,6 @@
 import { Component, ViewChild, ElementRef, Output, EventEmitter, AfterViewInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { forkJoin } from 'rxjs';
+import { forkJoin, take } from 'rxjs';
 import { alphabet, Word, TextColors, textColors, letterPoints, TimerEventData } from '../../game.model';
 
 @Component({
@@ -120,7 +120,7 @@ export class GameComponent implements AfterViewInit {
     forkJoin([
       this.http.get(dictionaryUrl),
       this.http.get(profanityUrl),
-    ]).subscribe(
+    ]).pipe(take(1)).subscribe(
       ([dictionaryResp, containsProfanity]) => {
         containsProfanity ? this.handleMistake() : this.handleSuccess(dictionaryResp);
       },
