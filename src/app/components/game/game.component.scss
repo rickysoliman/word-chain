@@ -110,3 +110,77 @@
     padding: 10px 4px;
     font-size: 1.5rem;
 }
+
+/* Styles for smaller screens */
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+  .game-wrapper,
+  .game-menu,
+  .word {
+    padding: 20px;
+  }
+
+  .countdown {
+    font-size: 4em;
+  }
+
+  .header-title {
+    font-size: 2em;
+  }
+
+  .header-value {
+    font-size: 1.2em;
+  }
+
+  .next-letter {
+    font-size: 2.5em;
+  }
+
+  .user-input {
+    font-size: 1.5em;
+    margin-top: 30px;
+  }
+
+  .word-chain-link {
+    font-size: 1.2em;
+  }
+}
+
+/* Styles for mobile */
+@media only screen and (max-width: 480px) {
+  .game-wrapper,
+  .game-menu,
+  .word {
+    padding: 15px;
+  }
+
+  .countdown {
+    font-size: 3em;
+  }
+
+  .header-title {
+    font-size: 1.8em;
+  }
+
+  .header-value {
+    font-size: 1.2em;
+  }
+
+  .sub-header {
+    flex-direction: column;
+  }
+
+  .next-letter {
+    font-size: 2.75em;
+    padding: 20px;
+  }
+
+  .user-input {
+    font-size: 1.5em;
+    margin-top: 25px;
+  }
+
+  .word-chain-link {
+    font-size: 1em;
+  }
+}
+
