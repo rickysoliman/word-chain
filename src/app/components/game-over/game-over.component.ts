@@ -28,7 +28,7 @@ export class GameOverComponent {
     this.wordCache = new Map();
     if (this.score > this.highScore) {
       this.highScore = this.score;
-      localStorage.setItem('highScore', this.highScore.toString());
+      localStorage.setItem('highScore', this.highScore.toLocaleString());
     }
     this.playAgainEvent.emit();
   }
@@ -36,7 +36,7 @@ export class GameOverComponent {
   quit(): void {
     if (this.score > this.highScore) {
       this.highScore = this.score;
-      localStorage.setItem('highScore', this.highScore.toString());
+      localStorage.setItem('highScore', this.highScore.toLocaleString());
     }
     this.quitEvent.emit();
   }
