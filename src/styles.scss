@@ -9,18 +9,14 @@ body {
 }
 
 a {
-  color: white;
-  transition: color 0.3s ease;
+    color: white;
+    transition: color 0.3s ease;
 }
 a:hover {
-  color: rgb(255, 0, 0);
+    color: rgb(255, 0, 0);
 }
 a:visited {
-  color: white;
-}
-
-.header-title {
-    font-size: 2em;
+    color: white;
 }
 
 .intro-text {
