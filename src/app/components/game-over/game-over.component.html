@@ -16,9 +16,9 @@
           <li *ngFor="let definition of wordCache.get(word).definitions">
             <p><strong>{{ definition.partOfSpeech }}</strong></p>
             <p>{{ definition.definitions[0].definition }}</p>
-            <i *ngIf="definition.synonyms.length > 0"><strong>Synonyms:</strong> {{ definition.synonyms.join(', ') }}</i>
-            <i *ngIf="definition.antonyms.length > 0"><strong>Antonyms:</strong> {{ definition.antonyms.join(', ') }}</i>
-            <i *ngIf="definition.example"><strong>Example:</strong> {{ definition.example }}</i>
+            <div class="italics"><i *ngIf="definition.synonyms.length > 0"><strong>Synonyms:</strong> {{ definition.synonyms.join(', ') }}</i></div>
+            <div class="italics"><i *ngIf="definition.antonyms.length > 0"><strong>Antonyms:</strong> {{ definition.antonyms.join(', ') }}</i></div>
+            <div class="italics"><i *ngIf="definition.example"><strong>Example:</strong> {{ definition.example }}</i></div>
           </li>
         </ul>
         <hr>

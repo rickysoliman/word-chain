@@ -89,3 +89,55 @@
     font-size: 16px;
     color: #FFD700;
 }
+
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+  .chain-results-word {
+    width: 80%;
+    padding: 15px;
+  }
+
+  .word-text {
+    font-size: 1.15em;
+  }
+
+  .definitions li {
+    padding: 8px 0;
+  }
+
+  .total-points {
+    margin-top: 8px;
+    font-size: 14px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .game-over {
+    padding: 20px;
+  }
+
+  .chain-results-word {
+    width: 90%;
+    padding: 12px;
+  }
+
+  .chain-results-word-header {
+    font-size: 1.2em;
+  }
+
+  .word-text {
+    font-size: 1.1em;
+  }
+
+  .definitions li {
+    padding: 6px 0;
+  }
+
+  .italics {
+    margin-top: 5px;
+  }
+
+  .total-points {
+    margin-top: 6px;
+    font-size: 12px;
+  }
+}
