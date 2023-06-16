@@ -2,7 +2,7 @@
 
 Word Chain is an online word game meant to test your vocabulary and spelling skills.
 
-Word Chain is built in Angular. Players' high scores are stored in local storage, meaning high scores will persist as long as the player continues to use the same device.
+Word Chain is built in Angular. It uses the [Free Dictionary API](https://dictionaryapi.dev/) and [Purgo Malum's Profanity Filter API](https://www.purgomalum.com/) for word validation. Players' high scores are stored in local storage, meaning high scores will persist as long as the player continues to use the same device.
 
 ## Rules
 
