@@ -9,6 +9,7 @@
 
 .header-title {
     text-align: center;
+    font-size: 2em;
 }
 
 .rules-wrapper {
@@ -58,4 +59,66 @@
     width: 182px;
     margin-bottom: 20px;
     font-size: 1em;
+}
+
+/* Media query for smaller screen sizes */
+@media (min-width: 481px) and (max-width: 768px) {
+    .menu-wrapper {
+        width: 90vw;
+        padding: 20px;
+    }
+
+    .rules-wrapper {
+        width: 90vw;
+    }
+
+    .game-rules {
+        width: 90vw;
+    }
+
+    .point-system {
+        width: 70vw;
+    }
+
+    .rule {
+        padding: 5px 0;
+    }
+
+    #sort-button {
+        width: 160px;
+        font-size: 0.8em;
+    }
+}
+
+/* Media query for mobile */
+@media (max-width: 480px) {
+    .menu-wrapper {
+        width: 100vw;
+        padding: 15px;
+    }
+
+    .rules-wrapper {
+        width: 90vw;
+    }
+
+    .game-rules {
+        width: 90vw;
+    }
+
+    .point-system {
+        width: 80vw;
+    }
+
+    .header-title {
+        font-size: 1.75em;
+    }
+
+    .rule {
+        padding: 3px 0;
+    }
+
+    #sort-button {
+        width: 145px;
+        font-size: 0.7em;
+    }
 }

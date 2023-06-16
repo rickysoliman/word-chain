@@ -19,6 +19,10 @@ a:visited {
   color: white;
 }
 
+.header-title {
+    font-size: 2em;
+}
+
 .intro-text {
     width: 65%;
     text-align: center;
@@ -147,4 +151,46 @@ a:visited {
 
 .high-score {
     color: #FFD700;
+}
+
+/* Media query for smaller screen sizes */
+@media (min-width: 481px) and (max-width: 768px) {
+  .intro-text {
+    width: 80%;
+  }
+
+  .intro-header {
+    font-size: 1.5em;
+  }
+
+  .intro-sentence {
+    font-size: 0.9em;
+  }
+
+  .button-success,
+  .button-quit,
+  .button-neutral {
+    font-size: 1.2em;
+  }
+}
+
+/* Media query for mobile */
+@media (max-width: 480px) {
+  .intro-text {
+    width: 75%;
+  }
+
+  .intro-header {
+    font-size: 1.25em;
+  }
+
+  .intro-sentence {
+    font-size: 0.8em;
+  }
+
+  .button-success,
+  .button-quit,
+  .button-neutral {
+    font-size: 1em;
+  }
 }
