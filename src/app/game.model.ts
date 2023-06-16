@@ -26,7 +26,7 @@ export const textColors = {
   mistake: TextColors.Mistake,
 };
 
-export const introText = `Welcome to Link-A-Word! Get ready for an exciting word chain challenge!`;
+export const introText = `Welcome to Word Chain! Get ready for an exciting word chain challenge!`;
 
 export const rules = [
     `At the start of the game you will be given a letter at random. You must enter a word that begins with that letter. From that point on, every succeeding word you enter must begin with the LAST LETTER OF THE PREVIOUS WORD.`,
