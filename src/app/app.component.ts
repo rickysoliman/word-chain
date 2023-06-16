@@ -28,6 +28,10 @@ export class AppComponent {
     this.updateAppState(2);
   }
 
+  handleQuitButtonClicked(): void {
+    this.updateAppState(0);
+  }
+
   get currentStateTemplate(): TemplateRef<any> {
     if (this.appStateIndex === 0) {
       return this.mainMenuTemplate;

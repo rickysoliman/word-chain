@@ -1,19 +1,28 @@
-<ng-container *ngTemplateOutlet="currentStateTemplate"></ng-container>
+<div class="app-wrapper">
+    <ng-container *ngTemplateOutlet="currentStateTemplate"></ng-container>
+</div>
 
 <ng-template #mainMenu>
     <app-main-menu (startGameEvent)="updateAppState(1)"></app-main-menu>
 </ng-template>
 
 <ng-template #game>
-    <app-game (timerFinished)="handleTimerFinished($event)"></app-game>
+    <div class="game-wrapper">
+        <app-game
+            (timerFinished)="handleTimerFinished($event)"
+            (quitButtonClicked)="handleQuitButtonClicked()"
+        ></app-game>
+    </div>
 </ng-template>
 
 <ng-template #gameOver>
-    <app-game-over
-        [wordChain]="wordChain"
-        [wordCache]="wordCache"
-        [score]="score"
-        (playAgainEvent)="updateAppState(1)" 
-        (quitEvent)="updateAppState(0)"
-    ></app-game-over>
+    <div class="game-over-wrapper">
+        <app-game-over
+            [wordChain]="wordChain"
+            [wordCache]="wordCache"
+            [score]="score"
+            (playAgainEvent)="updateAppState(1)" 
+            (quitEvent)="updateAppState(0)"
+        ></app-game-over>
+    </div>
 </ng-template>

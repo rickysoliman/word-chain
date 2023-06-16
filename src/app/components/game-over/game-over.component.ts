@@ -34,6 +34,10 @@ export class GameOverComponent {
   }
 
   quit(): void {
+    if (this.score > this.highScore) {
+      this.highScore = this.score;
+      localStorage.setItem('highScore', this.highScore.toString());
+    }
     this.quitEvent.emit();
   }
 }

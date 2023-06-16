@@ -1,6 +1,6 @@
 .game-wrapper, .game-menu, .word {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     flex-direction: column;
     width: auto;
@@ -44,7 +44,7 @@
     align-items: center;
     justify-content: space-around;
     margin-bottom: 20px;
-    width: 100vw;
+    width: 80vw;
 }
 
 .sub-header-item {
@@ -111,6 +111,13 @@
     font-size: 1.5rem;
 }
 
+#in-game-quit {
+    position: fixed;
+    bottom: 0;
+    width: fit-content;
+    margin: 10px;
+}
+
 /* Styles for smaller screens */
 @media only screen and (min-width: 481px) and (max-width: 768px) {
   .game-wrapper,
@@ -136,12 +143,7 @@
   }
 
   .user-input {
-    font-size: 1.5em;
-    margin-top: 30px;
-  }
-
-  .word-chain-link {
-    font-size: 1.2em;
+    padding-top: 30px;
   }
 }
 
@@ -175,12 +177,11 @@
   }
 
   .user-input {
-    font-size: 1.5em;
-    margin-top: 25px;
+    padding-top: 25px;
   }
 
-  .word-chain-link {
-    font-size: 1em;
+  #in-game-quit {
+    margin-bottom: 40px;
   }
 }
 

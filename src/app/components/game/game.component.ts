@@ -11,6 +11,7 @@ import { alphabet, Word, TextColors, textColors, letterPoints, TimerEventData } 
 export class GameComponent implements AfterViewInit {
   @ViewChild('inputField') inputField!: ElementRef;
   @Output() timerFinished: EventEmitter<TimerEventData> = new EventEmitter<TimerEventData>();
+  @Output() quitButtonClicked: EventEmitter<any> = new EventEmitter<any>();
 
   countdown: string | null = '3';
   nextLetter: string = '';
@@ -161,10 +162,7 @@ export class GameComponent implements AfterViewInit {
   }
 
   quit(): void {
-    this.highScore = this.score;
-    localStorage.setItem('highScore', this.highScore.toString());
     this.score = 0;
-    this.setNextLetter();
-    this.userInput = this.nextLetter;
+    this.quitButtonClicked.emit();
   }
 }
