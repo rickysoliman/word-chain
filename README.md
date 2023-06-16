@@ -2,6 +2,8 @@
 
 Word Chain is an online word game meant to test your vocabulary and spelling skills.
 
+Word Chain is built in Angular. Players' high scores are stored in local storage, meaning high scores will persist as long as the player continues to use the same device.
+
 ## Rules
 
 * At the start of the game you will be given a letter at random. You must enter a word that begins with that letter. From that point on, every succeeding word you enter must begin with the LAST LETTER OF THE PREVIOUS WORD.
@@ -14,7 +16,7 @@ Word Chain is an online word game meant to test your vocabulary and spelling ski
 * Offensive swear words or slurs will not be accepted.
 * You will have 60 seconds to build your chain and score as many points as possible.
 
-Word Chain is built in Angular. Players' high scores are stored in local storage, meaning high scores will persist as long as the player continues to use the same device.
+The scoring system rewards strategic play by assigning higher points to the least common letters in the English language, such as X, J, Q, and Z, for example. To maximize your score, aim for longer words that contain these rarer letters. Note that the first letter of every word is excluded from the scoring calculation, as it is always provided.
 
 ## Development server
 
@@ -22,8 +24,8 @@ Word Chain is built in Angular. Players' high scores are stored in local storage
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+`npm run build`
 
 ## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+`npm run test`
