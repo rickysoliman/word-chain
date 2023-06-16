@@ -24,12 +24,9 @@ export class TimerComponent implements OnInit {
   }
 
   startTimer() {
+    this.timeLeft = 59;
     this.timerInterval = setInterval(() => {
-      if (this.timeLeft > 0) {
-        this.timeLeft--;
-      } else {
-        this.stopTimer();
-      }
+      this.timeLeft > 0 ? this.timeLeft-- : this.stopTimer();
     }, 1000);
   }
 
