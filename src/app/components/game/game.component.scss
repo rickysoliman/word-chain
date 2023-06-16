@@ -35,7 +35,31 @@
 
 .header {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
+    text-align: center;
+}
+
+.sub-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 20px;
+    width: 100vw;
+}
+
+.sub-header-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.header-label {
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.header-value {
+    font-size: 1.2em;
 }
 
 .header-title {

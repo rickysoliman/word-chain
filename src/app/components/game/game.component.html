@@ -3,11 +3,19 @@
 <div class="game-wrapper">
   <div *ngIf="highScore > 0" class="high-score">High Score: {{ highScore.toLocaleString() }}</div>
   <div class="header">
-    <div class="header-chain-length">Chain Length: {{ wordChain.length }}</div>
     <h1 class="header-title">Link-A-Word</h1>
-    <div class="header-score">Score: {{ score.toLocaleString() }}</div>
-    <app-timer [hasGameStarted]="countdown === null" (timerFinished)="handleTimerFinished()"></app-timer>
   </div>
+  <div class="sub-header">
+      <div class="sub-header-item">
+        <span class="header-label">Chain Length:</span>
+        <span class="header-value">{{ wordChain.length }}</span>
+      </div>
+      <div class="sub-header-item">
+        <span class="header-label">Score:</span>
+        <span class="header-value">{{ score.toLocaleString() }}</span>
+      </div>
+      <app-timer [hasGameStarted]="countdown === null" (timerFinished)="handleTimerFinished()"></app-timer>
+    </div>
   <div class="next-letter">{{ nextLetter }}</div>
   <input
     #inputField
