@@ -68,6 +68,25 @@
     font-size: 1em;
 }
 
+.icon {
+    width: 150px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle, #4e4e4e, #000000);
+    border-radius: 50%;
+    padding: 5px;
+    box-sizing: border-box;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.icon img {
+    max-width: calc(100% - 20px);
+    max-height: calc(100% - 20px);
+    border-radius: 50%;
+}
+
 /* Media query for smaller screen sizes */
 @media (min-width: 481px) and (max-width: 768px) {
     .menu-wrapper {
