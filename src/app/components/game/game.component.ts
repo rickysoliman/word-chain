@@ -37,7 +37,7 @@ export class GameComponent implements AfterViewInit {
   startCountdown(): void {
     const countdownValues = ['3', '2', '1', 'GO'];
     let countdownIndex = 0;
-    
+
     const displayCountdown = () => {
       if (countdownIndex >= countdownValues.length) {
         this.countdown = null;
@@ -88,7 +88,7 @@ export class GameComponent implements AfterViewInit {
     const totalPoints = this.calculateScore();
     const word: Word = {
       index: this.wordChain.length,
-      definitions: dictionaryResp[0].meanings,
+      definitions: dictionaryResp.firstDefinition,
       stats,
       totalPoints,
     };
@@ -115,21 +115,12 @@ export class GameComponent implements AfterViewInit {
       return;
     }
 
-    const dictionaryUrl = `https://api.dictionaryapi.dev/api/v2/entries/en/${this.userInput}`;
-    const profanityUrl = `https://www.purgomalum.com/service/containsprofanity?text=${this.userInput}`;
+    const validatorURL = `http://localhost:8080/validity/${this.userInput}`;
+    const dictResp = this.http.get(validatorURL)
+    dictResp.isValid ? this.handleSuccess(dictionaryResp) : this.handleMistake();
 
-    forkJoin([
-      this.http.get(dictionaryUrl),
-      this.http.get(profanityUrl),
-    ]).pipe(take(1)).subscribe(
-      ([dictionaryResp, containsProfanity]) => {
-        containsProfanity ? this.handleMistake() : this.handleSuccess(dictionaryResp);
-      },
-      (error: any) => {
-        this.handleMistake();
-      }
-    );
   }
+
 
   updateNextLetter(): void {
     this.nextLetter = this.userInput[this.userInput.length - 1];
@@ -155,7 +146,7 @@ export class GameComponent implements AfterViewInit {
     this.score = 0;
     this.setNextLetter();
     this.userInput = this.nextLetter;
-    
+
     setTimeout(() => {
       this.inputField.nativeElement.focus();
     }, 0);
