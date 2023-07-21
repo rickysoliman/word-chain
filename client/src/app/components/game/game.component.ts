@@ -88,7 +88,7 @@ export class GameComponent implements AfterViewInit {
     const totalPoints = this.calculateScore();
     const word: Word = {
       index: this.wordChain.length,
-      definitions: dictionaryResp[0].meanings,
+      definitions: dictionaryResp,
       stats,
       totalPoints,
     };

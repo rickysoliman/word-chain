@@ -10,14 +10,39 @@ const port = process.env['PORT'] || 8080;
 
 app.use(morgan('tiny'));
 app.use(cors());
-console.log('api key: ', process.env['WORDNIK_API_KEY']);
+
+interface apiDefinition {
+  id: string
+  partOfSpeech: string
+  text: string
+  similarWords: string[]
+  exampleUses: {text: string}[]
+}
+
+interface responseDefinition {
+  id: string
+  partOfSpeech: string
+  definition: string
+  synonyms: string[]
+  example: string
+}
 
 app.get('/dictionary/:word', async (req: Request, res: Response) => {
   const word = req.params['word'].toLowerCase();
   const dictionaryUrl = `http://api.wordnik.com/v4/word.json/${word}/definitions?api_key=${process.env['WORDNIK_API_KEY']}`;
   try {
-    const { data } = await axios.get(dictionaryUrl);
-    res.status(200).send(data);
+    // const { data } = await axios.get(dictionaryUrl) as { data: apiDefinition[] };
+    // const results = data;
+    const { data } = await axios.get(dictionaryUrl) as { data: apiDefinition[] };
+    let results = data.map((def: apiDefinition): responseDefinition => ({
+      id: def.id,
+      partOfSpeech: def.partOfSpeech,
+      definition: def.text,
+      synonyms: def.similarWords,
+      example: def.exampleUses.map((example: {text: string}): string => example.text)[0],
+    }));
+    results = results.filter((def: responseDefinition): boolean => def.definition !== undefined && def.partOfSpeech !== undefined);
+    res.status(200).send(results);
     return;
   } catch (err: any) {
     if (axios.isAxiosError(err)) {
