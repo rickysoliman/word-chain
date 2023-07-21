@@ -37,7 +37,7 @@ export class GameComponent implements AfterViewInit {
   startCountdown(): void {
     const countdownValues = ['3', '2', '1', 'GO'];
     let countdownIndex = 0;
-    
+
     const displayCountdown = () => {
       if (countdownIndex >= countdownValues.length) {
         this.countdown = null;
@@ -88,7 +88,7 @@ export class GameComponent implements AfterViewInit {
     const totalPoints = this.calculateScore();
     const word: Word = {
       index: this.wordChain.length,
-      definitions: dictionaryResp[0].meanings,
+      definitions: dictionaryResp,
       stats,
       totalPoints,
     };
@@ -115,7 +115,7 @@ export class GameComponent implements AfterViewInit {
       return;
     }
 
-    const dictionaryUrl = `https://api.dictionaryapi.dev/api/v2/entries/en/${this.userInput}`;
+    const dictionaryUrl = `http://127.0.0.1:3005/dictionary/${this.userInput}`;
     const profanityUrl = `https://www.purgomalum.com/service/containsprofanity?text=${this.userInput}`;
 
     forkJoin([
@@ -155,7 +155,7 @@ export class GameComponent implements AfterViewInit {
     this.score = 0;
     this.setNextLetter();
     this.userInput = this.nextLetter;
-    
+
     setTimeout(() => {
       this.inputField.nativeElement.focus();
     }, 0);
